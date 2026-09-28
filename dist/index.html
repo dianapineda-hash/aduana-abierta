@@ -24,9 +24,13 @@
     <div class="edition"><span>COLOMBIA</span><span class="edition-line"></span><strong>Una puerta de entrada.<br>Todas las rutas de consulta.</strong><a href="#fuentes">Conoce las fuentes <span aria-hidden="true">↗</span></a></div>
   </section>
   <section class="search-area" aria-label="Buscador de recursos">
-    <form id="search-form" role="search"><label class="search-icon" for="query"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" aria-hidden="true"><circle cx="10.5" cy="10.5" r="6.8"/><path d="m16 16 5 5"/></svg><span class="sr-only">Buscar por tema, norma o trámite</span></label><input id="query" type="search" disabled placeholder="Busca un tema, una norma o un trámite" autocomplete="off"><kbd aria-hidden="true">/</kbd><button class="search-submit" type="submit" disabled>Consultar <span aria-hidden="true">↗</span></button></form>
-    <div class="suggestions"><span>Consultas rápidas</span><button data-query="arancel">Arancel</button><button data-query="origen">Certificado de origen</button><button data-query="1165">Decreto 1165</button><button data-query="anticipada">Declaración anticipada</button></div>
+    <form id="search-form" role="search"><label class="search-icon" for="query"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" aria-hidden="true"><circle cx="10.5" cy="10.5" r="6.8"/><path d="m16 16 5 5"/></svg><span class="sr-only">Buscar un producto, tema, norma o trámite</span></label><input id="query" type="search" disabled placeholder="¿Qué producto quieres importar o exportar?" autocomplete="off" aria-describedby="search-help"><kbd aria-hidden="true">/</kbd><button class="search-submit" type="submit" disabled>Consultar <span aria-hidden="true">↗</span></button></form>
+    <p id="search-help" class="search-help">Escribe un producto, un código arancelario, una norma o un trámite.</p>
+    <div class="suggestions"><span>Prueba con</span><button data-query="videojuegos">Videojuegos</button><button data-query="celulares">Celulares</button><button data-query="café">Café</button><button data-query="ropa">Ropa</button><button data-query="1165">Decreto 1165</button></div>
   </section>
+  <p id="product-status" class="sr-only" role="status" aria-live="polite"></p>
+  <p id="product-load-note" class="product-load-note" hidden>No se pudo cargar el índice de productos. Puedes seguir consultando documentos o <a href="https://muisca.dian.gov.co/WebArancel/DefMenuConsultas.faces" target="_blank" rel="noopener noreferrer">abrir el arancel de la DIAN ↗</a>.</p>
+  <section id="product-panel" class="product-panel" aria-labelledby="product-title" hidden></section>
   <section id="route-panel" hidden></section>
   <div class="workspace" id="workspace">
     <aside class="topics" aria-label="Temas de consulta"><div class="aside-title">EXPLORAR POR TEMA</div><div id="categories"></div><a class="official-index" href="https://www.dian.gov.co/aduanas/Paginas/Inicio.aspx" target="_blank" rel="noopener noreferrer">Portal de Aduanas DIAN <span aria-hidden="true">↗</span></a></aside>

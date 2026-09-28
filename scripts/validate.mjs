@@ -10,5 +10,6 @@ assert.equal(data.coverage.resources,data.resources.length);
 assert.equal(data.coverage.legal,data.resources.filter(r=>r.legal).length);
 for(const id of ['arancel','norma1165','res46','origen','exportacion','importacion','servicios','contingencia','estadisticas','valoracion','anticipada','novedades'])assert(data.resources.some(r=>r.id===id),id);
 const source=fs.readFileSync('dist/index.html','utf8');
+for(const file of ['dist/product-search.js','dist/product-ui.js','dist/tariff-index.json'])assert(fs.existsSync(file),'Missing product asset '+file);
 for(const match of source.matchAll(/(?:src|href)="([^"#:]+)"/g))if(!match[1].startsWith('http'))assert(fs.existsSync('dist/'+match[1]),'Missing asset '+match[1]);
 console.log(`Verified ${data.resources.length} resources, ${data.coverage.legal} legal references, ${data.coverage.legalIndexes} indexes, unique IDs, official origins, category integrity and local assets.`);
