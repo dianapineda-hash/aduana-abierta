@@ -1,0 +1,48 @@
+<!doctype html>
+<html lang="es">
+<head>
+  <meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+  <title>Aduana Abierta | Consulta de comercio exterior</title>
+  <meta name="description" content="Consulta los recursos oficiales de la DIAN sobre importaciones, exportaciones, arancel, origen, valoración y normativa aduanera en un solo lugar.">
+  <meta name="theme-color" content="#202426"><link rel="icon" href="assets/favicon.svg" type="image/svg+xml">
+  <link rel="stylesheet" href="styles.css"><script src="app.js" type="module"></script>
+</head>
+<body>
+<a href="#consulta" class="skip">Saltar a la consulta</a>
+<header class="masthead wrap">
+  <a class="wordmark" href="#explorar" aria-label="Aduana Abierta, inicio"><span class="brand-symbol" aria-hidden="true">a.</span><span>Aduana<br><b>Abierta</b></span></a>
+  <div class="mast-label">CENTRO DE CONSULTA<br><span>Aduanas y comercio exterior</span></div>
+  <a class="univalle" href="https://www.univalle.edu.co/" target="_blank" rel="noopener noreferrer"><img src="assets/univalle.jpg" width="424" height="51" alt="Universidad del Valle"></a>
+</header>
+<div class="navline"><nav class="wrap topnav" aria-label="Navegación principal">
+  <a href="#explorar" data-view="explorar">Explorar</a><a href="#importar" data-view="importar">Voy a importar</a><a href="#exportar" data-view="exportar">Voy a exportar</a><a href="#normativa" data-view="normativa">Normativa</a><a href="#servicios" data-view="servicios">Servicios DIAN</a>
+  <a href="#guardados" data-view="guardados" class="saved-nav"><svg viewBox="0 0 20 24" fill="none" stroke="currentColor" stroke-width="1.5" aria-hidden="true"><path d="M4 3h12v18l-6-4-6 4z"/></svg> Mi biblioteca <span id="saved-count">0</span></a>
+</nav></div>
+<main id="consulta" class="wrap">
+  <section class="intro" aria-labelledby="page-title">
+    <div><p class="eyebrow" id="eyebrow">INFORMACIÓN OFICIAL, A TU ALCANCE</p><h1 id="page-title">Tu centro de consulta aduanera.</h1><p class="intro-copy" id="intro-copy">Normas, trámites y orientación de la DIAN para importar y exportar.</p></div>
+    <div class="edition"><span>COLOMBIA</span><span class="edition-line"></span><strong>Una puerta de entrada.<br>Todas las rutas de consulta.</strong><a href="#fuentes">Conoce las fuentes <span aria-hidden="true">↗</span></a></div>
+  </section>
+  <section class="search-area" aria-label="Buscador de recursos">
+    <form id="search-form" role="search"><label class="search-icon" for="query"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" aria-hidden="true"><circle cx="10.5" cy="10.5" r="6.8"/><path d="m16 16 5 5"/></svg><span class="sr-only">Buscar por tema, norma o trámite</span></label><input id="query" type="search" placeholder="Busca un tema, una norma o un trámite" autocomplete="off"><kbd aria-hidden="true">/</kbd><button class="search-submit" type="submit">Consultar <span aria-hidden="true">↗</span></button></form>
+    <div class="suggestions"><span>Consultas rápidas</span><button data-query="arancel">Arancel</button><button data-query="origen">Certificado de origen</button><button data-query="1165">Decreto 1165</button><button data-query="anticipada">Declaración anticipada</button></div>
+  </section>
+  <section id="route-panel" hidden></section>
+  <div class="workspace" id="workspace">
+    <aside class="topics" aria-label="Temas de consulta"><div class="aside-title">EXPLORAR POR TEMA</div><div id="categories"></div><a class="official-index" href="https://www.dian.gov.co/aduanas/Paginas/Inicio.aspx" target="_blank" rel="noopener noreferrer">Portal de Aduanas DIAN <span aria-hidden="true">↗</span></a></aside>
+    <section class="results-section" aria-labelledby="results-title">
+      <div class="results-heading"><div><p class="eyebrow" id="result-kicker">BIBLIOTECA DE CONSULTA</p><h2 id="results-title">Lo esencial, bien organizado.</h2></div><span class="total-label" id="result-count" role="status" aria-live="polite">Cargando fuentes…</span></div>
+      <div class="filters"><label><span class="sr-only">Tipo de recurso</span><select id="type-filter"><option value="">Todos los recursos</option><option>Norma</option><option>Resolución</option><option>Decreto</option><option>Ley</option><option>Circular</option><option>Guía</option><option>Servicio</option><option>Doctrina</option><option>Jurisprudencia</option><option>Estadística</option><option>Directorio</option><option>Publicación</option></select></label><label><span class="sr-only">Año del documento</span><select id="year-filter"><option value="">Cualquier año</option></select></label><button id="clear-filters" class="clear" hidden>Limpiar filtros</button><span id="scope-label">Fuentes DIAN</span></div>
+      <div id="results" class="resource-list" aria-busy="true"><p>Estamos cargando el directorio de consulta.</p></div>
+      <div class="pagination"><button id="previous" class="secondary">Anterior</button><span id="page-count"></span><button id="next" class="secondary">Siguiente <span aria-hidden="true">→</span></button></div>
+    </section>
+    <aside class="quick-panel" aria-label="Accesos destacados"><div class="reference-card"><p class="eyebrow">A MANO</p><h2>El punto de partida<br>jurídico.</h2><p>Normas, doctrina y jurisprudencia en la compilación oficial.</p><a href="https://normograma.dian.gov.co/dian/compilacion/aduanero.html?q=ADUANERO" target="_blank" rel="noopener noreferrer">Abrir normograma <span aria-hidden="true">↗</span></a><div class="reference-bottom">COMPILACIÓN JURÍDICA DIAN</div></div><div class="shortcuts"><h3>Resuelve tu consulta</h3><button data-open="arancel">Consultar una subpartida <span>↗</span></button><button data-open="origen">Revisar reglas de origen <span>↗</span></button><button data-open="contingencia">Ver contingencias <span>↗</span></button><button data-open="estadisticas">Explorar cifras de comercio <span>↗</span></button></div><div class="source-note"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.4" aria-hidden="true"><path d="m12 2 8 4v6c0 5-8 10-8 10S4 17 4 12V6z"/><path d="m8 12 3 3 5-6"/></svg><p>Consulta siempre las notas de vigencia y las modificaciones en el documento oficial.</p></div></aside>
+  </div>
+  <section class="sources-panel" id="sources-panel" hidden></section>
+  <section class="bottom-routes"><div><p class="eyebrow">DE LA CONSULTA A LA OPERACIÓN</p><h2>Ubica tu siguiente paso.</h2></div><a href="#importar"><span>01</span><div><h3>Quiero importar</h3><p>Clasificación, documentos y declaración.</p></div><b aria-hidden="true">↗</b></a><a href="#exportar"><span>02</span><div><h3>Quiero exportar</h3><p>Preparación, origen y salida de mercancías.</p></div><b aria-hidden="true">↗</b></a></section>
+</main>
+<footer class="wrap"><div class="footer-brand">Aduana Abierta<span>Consulta de comercio exterior</span></div><p>Portal independiente de consulta. Recursos enlazados a la DIAN.<br>No representa a la DIAN ni acredita aval institucional de la Universidad del Valle.</p><div><a href="#fuentes">Fuentes y alcance</a><a href="https://www.univalle.edu.co/la-universidad/nuestros-simbolos/manual-de-identidad-visual-corporativa" target="_blank" rel="noopener noreferrer">Identidad visual Univalle ↗</a></div></footer>
+<dialog id="resource-dialog" aria-labelledby="dialog-title"><button class="close-dialog" aria-label="Cerrar ficha">×</button><div id="dialog-content"></div></dialog>
+<div id="toast" role="status" aria-live="polite"></div>
+<noscript><p class="wrap">Activa JavaScript para buscar. Puedes consultar directamente el <a href="https://normograma.dian.gov.co/dian/">Normograma DIAN</a> y el <a href="https://www.dian.gov.co/aduanas/Paginas/Inicio.aspx">portal de Aduanas</a>.</p></noscript>
+</body></html>
